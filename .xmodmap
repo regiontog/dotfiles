@@ -1,0 +1,7 @@
+remove Lock = Caps_Lock
+keysym Caps_Lock = Escape
+
+keycode 108 = Mode_switch 
+keycode 34 = bracketleft braceleft aring Aring
+keycode 48 = apostrophe quotedbl ae AE
+keycode 47 = semicolon colon oslash Oslash

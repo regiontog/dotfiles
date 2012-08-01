@@ -1,0 +1,34 @@
+# Increase volume
+"amixer -c 0 set Master 1+ unmute"
+    m:0x0 + c:123
+    XF86AudioRaiseVolume
+
+# Decrease volume
+"amixer -c 0 set Master 1- unmute"
+    m:0x0 + c:122
+    XF86AudioLowerVolume
+
+# Toggle mute
+"amixer set Master toggle"
+    m:0x0 + c:121
+    XF86AudioMute
+
+# Play
+"ncmpcpp toggle"
+    m:0x10 + c:172
+    XF86AudioPlay
+
+# Stop
+"ncmpcpp stop"
+    m:0x10 + c:174
+    XF86AudioStop
+
+# Next
+"ncmpcpp next"
+    m:0x10 + c:171
+    XF86AudioNext
+
+# Prev
+"ncmpcpp prev"
+    m:0x10 + c:173
+    XF86AudioPrev

@@ -1,0 +1,21 @@
+[submodule ".config/awesome/vicious"]
+	path = .config/awesome/vicious
+	url = git://github.com/Mic92/vicious.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/The-NERD-Commenter"]
+	path = .vim/bundle/The-NERD-Commenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule ".vim/bundle/vim-matchit"]
+	path = .vim/bundle/vim-matchit
+	url = git://github.com/tsaleh/vim-matchit.git
+[submodule ".vim/bundle/vim-powerline"]
+	path = .vim/bundle/vim-powerline
+	url = git://github.com/Lokaltog/vim-powerline.git
+[submodule ".vim/bundle/vundle"]
+	path = .vim/bundle/vundle
+	url = git://github.com/gmarik/vundle.git
+[submodule ".vim/bundle/Wombat"]
+	path = .vim/bundle/Wombat
+	url = git://github.com/vim-scripts/Wombat.git
