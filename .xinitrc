@@ -11,8 +11,7 @@ unclutter &
 
 ## Pipeline conky to wmfs2
 #for f in ~/.config/wmfs/scripts/*; do
-#  name=$(echo $f | sed 's/\/home\/alan\/.config\/wmfs\/scripts\///')
-#  conky -c $f | while true; read line; do wmfs -c status "$name $line"; done &
+#  conky -c $f | while true; read line; do wmfs -c status "$(basename $f) $line"; done &
 #  done
 
 ### Start wm/de

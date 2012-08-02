@@ -1,5 +1,5 @@
 """"""""""""""""""" PLUGINS
-set nocompatible 
+set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
@@ -11,6 +11,7 @@ Bundle 'The-NERD-Commenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-scripts/Wombat'
+Bundle 'vim-scripts/Lucius'
 
 """""""""""""""""""" GLOBAL
 " Misc
@@ -18,34 +19,32 @@ syntax on
 filetype plugin indent on
 
 let mapleader=","
-colorscheme wombat
+colorscheme andrew
 
-set backup
-set backupdir=/tmp/vim,/tmp
-set noswapfile
-set undofile
-set undolevels=1000
-set undodir=~/.vim/undodir,/tmp
-au FocusLost * :wa
+" Look and feel
+set mouse=
+set t_Co=256
+set number
+set nowrap
+set cursorline
+set splitbelow
+set ruler
 
-set encoding=utf-8
 set hidden
 set showcmd
-
-set mouse=
-set history=1000
 set visualbell
 set noerrorbells
 set ttyfast
-set fileformats=unix,dos,mac
+set nottybuiltin
+
+set cmdheight=1
 set laststatus=2
 set scrolloff=4
+set sidescroll=4
 
-" Look
-set number
-set nowrap
-set cursorline 
-set ruler
+set formatoptions=croqn
+set linebreak showbreak=+>
+set diffopt=filler,vertical,iwhite
 set list listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 " Tabs and indentation
@@ -56,29 +55,51 @@ set backspace=indent,eol,start
 set autoindent
 set copyindent
 set smartindent
+set switchbuf=useopen,usetab
 
 " Search
-set incsearch
-set hlsearch
+set incsearch nohlsearch
 set ignorecase smartcase
 set infercase
 
+" Saving
+set backup
+set undofile
+set backupdir=~/.vim/backup,/tmp/vim,/tmp
+set undodir=~/.vim/undodir,/tmp/vimundo,/tmp
+set undolevels=1000
+set history=1000
+set noswapfile
+set viminfo+=!
+
 " Completion
-set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
-set complete-=k complete+=k
+set complete=.,w,b,k
+set completeopt=menuone,longest
 set wildignore=*.swp,*.bak
-set wildmode=longest,list
+set wildmenu
+set wildmode=list:longest,full
+
+" Files
+set autoread autowrite
+set encoding=utf-8
+set fileformats=unix,dos,mac
 
 
 """""""""""""""""""" KEYBINDINGS
+nmap ; :
+
+imap jj <ESC>
+imap jk <ESC>
+
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
 inoremap <Up>    <NOP>
 inoremap <Down>  <NOP>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+
+nnoremap <Up>    <NOP>
+nnoremap <Down>  <NOP>
+nnoremap <Left>  <NOP>
+nnoremap <Right> <NOP>
 
 inoremap () ()<Left>
 inoremap [] []<Left>
@@ -86,14 +107,52 @@ inoremap '' ''<Left>
 inoremap "" ""<Left>
 inoremap {} {}<Left>
 
-inoremap jj <ESC>
-inoremap jk <ESC>
-nnoremap ; :
+nnoremap gh <C-w>h
+nnoremap gj <C-w>j
+nnoremap gk <C-w>k
+nnoremap gl <C-w>l
+
+nmap J 5j
+nmap K 5k
+xmap J 5j
+xmap K 5k
+
+nnoremap <C-l> gt
+nnoremap <C-h> gT
+
+nnoremap 0 ^
+
+nnoremap ! :Run<cr>
+xnoremap ! :Run<cr>
 
 map cc <leader>c<space>
-map  <F6> :setlocal spell! spelllang=en<CR>
+map <F6> :setlocal spell! spelllang=en<CR>
 cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
 nmap <c-b> :NERDTreeToggle<cr>
+
+command! CleanWhitespace call lib#InPlace('%s/\s\+$//e')
+
+"""""""""""""""""""" AUTOCOMMANDS
+augroup custom
+  au!
+  au FocusLost * :wa
+
+  let g:clean_whitespace = 1
+  au BufWritePre *
+        \ if g:clean_whitespace   |
+        \   exe "CleanWhitespace" |
+        \ endif
+
+  au BufEnter *.c    compiler gcc
+  au BufEnter *.cpp  compiler gcc
+  au BufEnter *.php  compiler php
+  au BufEnter *.html compiler tidy
+  au BufEnter *.xml  compiler eclim_xmllint
+  au BufEnter *.js   compiler jsl
+
+  au BufEnter *.hsc  set filetype=haskell
+  au BufEnter *.tags set filetype=tags
+augroup END
 
 """""""""""""""""""" PLUGINS
 let g:Powerline_symbols = 'fancy'
@@ -121,5 +180,5 @@ function! Tab_Or_Complete()
     return "\<Tab>"
   endif
 endfunc
-inoremap <tab> <C-R>=Tab_Or_Complete()<CR>
-inoremap <s-tab> <c-p>
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+inoremap <S-Tab> <C-p>

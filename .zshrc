@@ -7,7 +7,7 @@ setopt interactivecomments # allow comments on cmd line.
 # setopt SH_WORD_SPLIT     # split up var in "for x in *"
 setopt MULTIOS             # Allow multiple redirection echo 'a'>b>c
 setopt CORRECT CORRECT_ALL # Try to correct command line spelling
-setopt BANG_HIST           # Allow ! for accessing history 
+setopt BANG_HIST           # Allow ! for accessing history
 setopt NOHUP               # Don't HUP running jobs on logout.
 setopt NOBGNICE            # Don't renice background jobs
 setopt EXTENDED_GLOB       # Enable extended globbing
@@ -92,3 +92,4 @@ export PATH
 [ $(which pacing | wc -w) -eq 1 ] && alias pacman=pacing
 alias ls='ls --color=auto'
 alias mkpkg=makepkg
+alias torr=transmission-gtk
