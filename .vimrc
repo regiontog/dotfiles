@@ -49,7 +49,7 @@ set list listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 " Tabs and indentation
 set expandtab
-set softtabstop=2 tabstop=2 shiftwidth=2
+set softtabstop=4 tabstop=4 shiftwidth=4
 set shiftround
 set backspace=indent,eol,start
 set autoindent

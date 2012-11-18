@@ -65,11 +65,13 @@ setopt autocd
 unsetopt appendhistory beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
-
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-        export TERM='xterm-256color'
+#
+if [ -n "$TMUX" ]; then
+  export TERM=screen-256color
+elif [ -e /lib/terminfo/x/xterm-256color ]; then
+  export TERM='xterm-256color'
 else
-        export TERM='xterm-color'
+  export TERM='xterm-color'
 fi
 
 autoload -U colors && colors
@@ -93,3 +95,10 @@ export PATH
 alias ls='ls --color=auto'
 alias mkpkg=makepkg
 alias torr=transmission-gtk
+
+source ~/.zsh/zsh-syntax-highlighting.zsh
+
+### Launch tmux
+if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
+  tmux new; exit
+fi
