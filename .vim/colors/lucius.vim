@@ -30,7 +30,7 @@ let colors_name="lucius"
 " Base color
 " ----------
 hi Normal           guifg=#e0e0e0           guibg=#202020
-hi Normal           ctermfg=253             ctermbg=235
+hi Normal           ctermfg=253             ctermbg=257
 
 
 " Comment Group
@@ -224,13 +224,13 @@ hi ErrorMsg         guifg=#ee0000           guibg=NONE              gui=none
 hi ErrorMsg         ctermfg=196             ctermbg=NONE            cterm=none
 " column separating vertically split windows
 hi VertSplit        guifg=#777777           guibg=#363946           gui=none
-hi VertSplit        ctermfg=242             ctermbg=237             cterm=none
+hi VertSplit        ctermfg=242             ctermbg=259             cterm=none
 " columns where signs are displayed (used in IDEs)
 hi SignColumn       guifg=#9fafaf           guibg=#181818           gui=none
 hi SignColumn       ctermfg=145             ctermbg=233             cterm=none
 " line numbers
 hi LineNr           guifg=#818698           guibg=#363946
-hi LineNr           ctermfg=102             ctermbg=237
+hi LineNr           ctermfg=94             ctermbg=259
 " match parenthesis, brackets
 hi MatchParen       guifg=#00ff00           guibg=NONE              gui=bold
 hi MatchParen       ctermfg=46              ctermbg=NONE            cterm=bold
