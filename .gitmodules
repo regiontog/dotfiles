@@ -6,7 +6,7 @@
 	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
-	url = git://github.com/scrloose/nercommenter.git
+	url = git://github.com/scrooloose/nerdcommenter.git
 [submodule ".vim/bundle/vundle"]
 	path = .vim/bundle/vundle
 	url = git://github.com/gmarik/vundle.git
@@ -15,7 +15,7 @@
 	url = git://github.com/vim-scripts/YankRing.vim.git
 [submodule ".vim/bundle/ctrlp.vim"]
 	path = .vim/bundle/ctrlp.vim
-	url = git://github.com/kien/ctrlp.git
+	url = git://github.com/kien/ctrlp.vim.git
 [submodule ".vim/bundle/delimitMate"]
 	path = .vim/bundle/delimitMate
 	url = git://github.com/Raimondi/delimitMate.git
@@ -30,7 +30,7 @@
 	url = git://github.com/ervandew/supertab.git
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
-	url = git://github.com/scooloose/syntastic.git
+	url = git://github.com/scrooloose/syntastic.git
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
