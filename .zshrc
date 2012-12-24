@@ -15,7 +15,7 @@ zmodload zsh/complist
 autoload -Uz compinit
 compinit
 
-zstyle :compinstall filename '${HOME}/.zshrc'
+zstyle :compinstall filename '$XDG_CONFIG_HOME/zsh/zshrc'
 
 zstyle ':completion:*' completer _expand _complete
 zstyle ':completion:*' use-cache on
@@ -76,7 +76,10 @@ zstyle ':completion:*:*:killall:*' menu yes select
 zstyle ':completion:*:killall:*'   force-list always
 
 
-HISTFILE=~/.zshhist
+autoload -Uz compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=$XDG_CONFIG_HOME/zsh/history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt autocd
@@ -108,6 +111,8 @@ export BROWSER="firefox"
 export PAGER="vimpager"
 export EDITOR="vim"
 export PATH="${PATH}:$HOME/bin"
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vimrc" | source $MYVIMRC'
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 
 # Dircolors
 LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
@@ -118,6 +123,12 @@ alias ls='ls --color -F'
 alias ll='ls --color -lh'
 alias spm='sudo pacman'
 alias mkpkg='makepkg'
+alias startx="startx $XINITRC"
 
 # Run plugins
-source ~/.zsh/zsh-syntax-highlighting.zsh
+source $XDG_CONFIG_HOME/zsh/zsh-syntax-highlighting.zsh
+
+### Launch tmux
+#if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
+#  tmux new; exit
+#fi

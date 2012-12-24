@@ -1,15 +1,16 @@
+CONF=$XDG_CONFIG_HOME/X11
+
 ### X11 configuration
-xmodmap ~/.xmodmap
-xbindkeys -f ~/.xbindkeys
-xrdb ~/.Xresources
-xrandr --output DVI-0 --preferred --right-of DVI-1
+xmodmap $CONF/xmodmap
+xbindkeys -f $CONF/xbindkeys
+xrdb $CONF/Xresources
 
 ### Configure mouse
 unclutter &
 xsetroot -cursor_name left_ptr
 
-### Background
-#feh --bg-fill ~/Pictures/bg.*
+# Background
+feh --bg-fill ~/media/pics/wallpapers/*
 
 ## Pipeline conky to wmfs2
 #for f in ~/.config/wmfs/scripts/*; do
@@ -17,4 +18,4 @@ xsetroot -cursor_name left_ptr
 #  done
 
 ### Start wm/de
-exec gnome-session-cinnamon
+exec xmonad
