@@ -1,6 +1,7 @@
 history
 inspiration/**
-lib
+lib/*.hi
+lib/*.o
 xmonad.errors
 xmonad.hi
 xmonad.o
