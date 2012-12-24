@@ -58,7 +58,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.zshhist
+HISTFILE=$XDG_CONFIG_HOME/zsh/history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt autocd
@@ -89,16 +89,19 @@ EDITOR=vim
 
 PATH=${PATH}:$HOME/bin
 export PATH
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vimrc" | source $MYVIMRC'
+XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 
 # Aliases
 [ $(which pacing | wc -w) -eq 1 ] && alias pacman=pacing
 alias ls='ls --color=auto'
 alias mkpkg=makepkg
 alias torr=transmission-gtk
+alias startx="startx $XINITRC"
 
-source ~/.zsh/zsh-syntax-highlighting.zsh
+source $XDG_CONFIG_HOME/zsh/zsh-syntax-highlighting.zsh
 
 ### Launch tmux
-if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
-  tmux new; exit
-fi
+#if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
+#  tmux new; exit
+#fi

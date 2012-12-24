@@ -1,6 +1,5 @@
-URxvt.perl-ext-common:  default,url-select
+URxvt*font: xft:Bitstream Vera Sans Mono for Powerline:size=9
 
-URxvt.font: xft:DejaVu Sans Mono for Powerline:size=10
 Xft*dpi: 96
 Xft*antialias: true
 Xft*hinting: true
@@ -18,9 +17,6 @@ URxvt*geometry: 100x35
 URxvt*depth: 32
 urxvt.background: #151515
 urxvt.foreground: #999993
-
-URxvt.urlLauncher: /usr/bin/firefox
-URxvt.matcher.button: 1
 
 
 ! Black

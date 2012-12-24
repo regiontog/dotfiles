@@ -1,0 +1,100 @@
+    , screen        = Just 0,V
+newWorkspaces,v
+,V
+myWorkspaces = [("0_1", "main"), ("0_2", "www"), ("0_3", "code"), ("0_4", "chat"), ("0_5", "media"), ("0_6", "other")],V
+1,v
+0,v
+map fst,v
+ ,v
+p,v
+a,v
+m,v
++,v
+head ,v
+    currWS :: [String],V
+Nothing,v
+$,v
+(,v
+.,v
+),v
+Just 0,v
+    , screen        = Just 1,V
+    currWS =,V
+currWS,v
+workspaces' !! (fromMaybe 0 (screen c)),v
+myWorkspaces,v
+ws in currWS ws,v
+currWS !! elemIndex,v
+getIndex,v
+fromMaybe "" ),v
+(lookup ws [(ws,currWS)],v
+],v
+-,v
+!,v
+    workspaces' = fromMaybe [[""]] . workSpaces c,V
+e,v
+r,v
+h,v
+w,v
+    dropWS String -> String -- If arg in workspaces(screen) return arg else return "",V
+maybe "" show (screen c) `isPrefixOf` ,v
+(),v
+i,v
+(!!) workspaces' screen $ c,v
+c,v
+ws,v
+-- If arg in workspaces(screen) return arg else return "",v
+j,v
+fromMaybe [[""]] (workSpaces c),v
+("",""),v
+(String, String),v
+    ,1
+,,v
+ordered ,v
+=,v
+data,v
+rw,v
+4     ,v
+stripe,v
+relatime,v
+			   ,v
+	,v
+	    ,v
+ 	,v
+			,v
+	 ,v
+	   ,v
+Detect,v
+        Option "PalmDetect" "1",V
+Hook,v
+ble,v
+       ,1
+-- Active WS-- WS on secondary monitor-- WS w/ windows, but not visi-- WS w/o windows, not visible-- WS has triggered an Urgency-- Title of focused window-- Name of focused WS' layout,30
+set ttimeoutlen=10,V
+set noesckeys,V
+A,V
+" Config fileslet CONFIG_HOME="$XDG_CONFIG_HOME/vim/config/"let $MAPS=CONFIG_HOME + "mappings.vim"let $PLUGINS=CONFIG_HOME + "plugins.vim"let $FUNCS=CONFIG_HOME + "functions.vim",V
+plugins,V
+mappings.vim,V
+gui.vim,V
+functions.vim,V
+filelocations.vim,V
+autocommands.vim,V
+let $MAPS=CONFIG_HOME + "mappings.vim",V
+mappings,v
+MAPS,v
+plugins.vim,v
+let $MYVIMRC="$XDG_CONFIG_HOME/vimrc",V
+$XDG_CONFIG_HOME/vim/config/,v
+",v
+rc,v
+MYVIMRC,v
+let g:bundle_dir = "$HOME/.config/vim/bundle",V
+o,v
+data Mine = Mine Int    [],V
+Type,v
+badwolf,v
+runtimepath,v
+4,v
+other,v
+, ("0_5", "other"),v

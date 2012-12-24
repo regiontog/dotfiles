@@ -1,12 +1,15 @@
 set nocompatible
 
+" Environment
+set rtp=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIMRUNTIME
+
 " Source the config files
 runtime! config/**/*.vim
 
 " Look and feel
 syntax on
 filetype plugin indent on
-colorscheme badwolf
+colorscheme lucius
 
 set mouse=
 set t_Co=256
@@ -57,7 +60,7 @@ set undodir=~/.vim/undodir//,/tmp/vimundo//,/tmp//
 set undolevels=1000
 set history=1000
 set noswapfile
-set viminfo+=!
+set viminfo=""
 
 
 " Completion
