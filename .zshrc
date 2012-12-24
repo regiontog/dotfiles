@@ -1,16 +1,21 @@
-# The following lines were added by compinstall
+unsetopt appendhistory beep
 setopt nobeep              # No beeping
 setopt AUTOPUSHD PUSHDMINUS PUSHDSILENT PUSHDTOHOME
 setopt AUTOCD              # cd by typing dirname
 setopt cdablevars          # Follow variables which are dirnames
 setopt interactivecomments # allow comments on cmd line.
-# setopt SH_WORD_SPLIT     # split up var in "for x in *"
 setopt MULTIOS             # Allow multiple redirection echo 'a'>b>c
 setopt CORRECT CORRECT_ALL # Try to correct command line spelling
 setopt BANG_HIST           # Allow ! for accessing history
 setopt NOHUP               # Don't HUP running jobs on logout.
 setopt NOBGNICE            # Don't renice background jobs
 setopt EXTENDED_GLOB       # Enable extended globbing
+
+zmodload zsh/complist
+autoload -Uz compinit
+compinit
+
+zstyle :compinstall filename '${HOME}/.zshrc'
 
 zstyle ':completion:*' completer _expand _complete
 zstyle ':completion:*' use-cache on
@@ -45,7 +50,7 @@ zstyle ':completion:*:tar:*' files '*.tar|*.tgz|*.tz|*.tar.Z|*.tar.bz2|*.tZ|*.ta
 zstyle ':completion:*:xdvi:*' files '*.dvi'
 zstyle ':completion:*:dvips:*' files '*.dvi'
 
-# Group relatex matches:
+# Group related matches:
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:-command-:*:(commands|builtins|reserved-words-aliases)' group-name commands
 
@@ -54,18 +59,30 @@ zstyle ':completion:*' list-separator '#'
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
+#- buggy
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+#-/buggy
+
+zstyle ':completion:*:pacman:*' force-list always
+zstyle ':completion:*:*:pacman:*' menu yes select
+
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*'   force-list always
+
+zstyle ':completion:*:*:killall:*' menu yes select
+zstyle ':completion:*:killall:*'   force-list always
+
+
 HISTFILE=~/.zshhist
 HISTSIZE=10000
 SAVEHIST=10000
 setopt autocd
-unsetopt appendhistory beep
 bindkey -v
-# End of lines configured by zsh-newuser-install
-#
+
+# Set term
 if [ -n "$TMUX" ]; then
   export TERM=screen-256color
 elif [ -e /lib/terminfo/x/xterm-256color ]; then
@@ -74,8 +91,8 @@ else
   export TERM='xterm-color'
 fi
 
+# Set prompt
 autoload -U colors && colors
-
 unset PS1 PS2 PS3 PS4 PROMPT RPROMPT
 
 d_col=${1:-'blue'}
@@ -83,22 +100,24 @@ b_col=${2-'yellow'}
 n_tru=${3:-'blue'}
 n_fal=${4:-'red'}
 
-PS1='%(?.%{$fg_bold[$n_tru]%}.%{$fg[$n_fal]%})%# %{$reset_color%}'
-RPROMPT='%{$fg_bold[$b_col]%}${vcs_info_msg_0_}%{$fg_bold[$d_col]%}%1~%{$reset_color%}'
-EDITOR=vim
+export PS1='%(?.%{$fg_bold[$n_tru]%}.%{$fg[$n_fal]%})%# %{$reset_color%}'
+export RPROMPT='%{$fg_bold[$b_col]%}${vcs_info_msg_0_}%{$fg_bold[$d_col]%}%1~%{$reset_color%}'
 
-PATH=${PATH}:$HOME/bin
-export PATH
+# Variables
+export BROWSER="firefox"
+export PAGER="vimpager"
+export EDITOR="vim"
+export PATH="${PATH}:$HOME/bin"
+
+# Dircolors
+LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
+export LS_COLORS
 
 # Aliases
-[ $(which pacing | wc -w) -eq 1 ] && alias pacman=pacing
-alias ls='ls --color=auto'
-alias mkpkg=makepkg
-alias torr=transmission-gtk
+alias ls='ls --color -F'
+alias ll='ls --color -lh'
+alias spm='sudo pacman'
+alias mkpkg='makepkg'
 
+# Run plugins
 source ~/.zsh/zsh-syntax-highlighting.zsh
-
-### Launch tmux
-if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
-  tmux new; exit
-fi

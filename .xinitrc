@@ -4,7 +4,9 @@ xbindkeys -f ~/.xbindkeys
 xrdb ~/.Xresources
 xrandr --output DVI-0 --preferred --right-of DVI-1
 
+### Configure mouse
 unclutter &
+xsetroot -cursor_name left_ptr
 
 ### Background
 #feh --bg-fill ~/Pictures/bg.*
@@ -15,4 +17,4 @@ unclutter &
 #  done
 
 ### Start wm/de
-exec awesome
+exec gnome-session-cinnamon

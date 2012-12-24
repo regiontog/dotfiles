@@ -1,6 +1,10 @@
 URxvt.perl-ext-common:  default,url-select
+URxvt*font:           xft:Ubuntu Mono for Powerline:RegularForPowerling:size=10
+URxvt*imFont:         xft:Ubuntu Mono for Powerline:RegularForPowerling:size=10
+URxvt*boldFont:       xft:Ubuntu Mono for Powerline:BoldForPowerline:size=10
+URxvt*italicFont:     xft:Ubuntu Mono for Powerline:ItalicForPowerline:size=10
+URxvt*boldItalicFont: xft:Ubuntu Mono for Powerline:Bold Italic:size=10
 
-URxvt.font: xft:DejaVu Sans Mono for Powerline:size=10
 Xft*dpi: 96
 Xft*antialias: true
 Xft*hinting: true
